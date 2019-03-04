@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/xiangqing.css">
+	<script type="text/javascript" SRC="./js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+	<div class="teacher-detail" id="xq"  >
+	    <div class="teacher-item">
+			<div class="teacher-img">
+				<img :src="teacher.image" alt="">
+			</div>
+			<div class="teacher-info">
+				<p class="info"><span class="name">{{ teacher.name }}</span> <span class="sub"  v-for="it in teacher.subject">{{ it.label }}</span><span class="label"  v-for="it in teacher.grade">{{ it.label }}</span> <span class="price">{{ teacher.price }}</span></p>
+				<p class="teach-year">
+					<span class="teach">{{ teacher.teach_year }}年教龄</span>
+				</p>
+				<p class="accept">
+					<span class="dui" v-for="it in teacher.extend_tag">{{ it.label }}</span>
+				</p>
+			    <i class="time">已授课{{ teacher.teach_time }}小时</i>
+			</div>
+		</div>
+		<div class="info-box">
+			<div class="info-intro">
+				<p class="intro title">个人简介</p>
+				<div class="item">
+					<p>{{ teacher.intro }}</p>
+				</div>
+			</div>
+			<div class="info-intro">
+				<p class="exprience title">教学经历</p>
+                <div class="item" v-for="item in teacher.teacher_experience">
+                	<p>{{ item.title }}</p>
+                	<p>{{ item.content }}</p>
+                </div>
+			</div>
+			<div class="info-intro">
+				<p class="title example">成功案例</p>
+				<div class="item" v-for="item in teacher.teacher_case">
+					<p class="item-title">{{ item.title }}<!-- 本次考试苑同学数学117班级前三 --></p>
+					<p>{{ item.content }}<!-- 严格要求学生，在学习方面引导他形成好的习惯，改掉倦怠，对数学充满学习兴趣，经过集中的强化辅导，最后由开始的85分提高到117分，对于综合答题有了清晰的解题思路，答题步骤也不再像原来一样经常有丢分的现象了 --></p>
+				</div>
+				<!-- <div class="item">
+					<p class="item-title">十二中李同学正在学习中</p>
+					<p>制定适合学生的学习方法，根据学生的自身特点制定学习计划，将学习兴趣与学习技巧相结合，正在进行中，学习情况有待观察</p>
+				</div> -->
+			</div>
+		</div>
+		<div class="order">
+			<div class="order-text">满意就预约吧
+			</div>
+			<hr>
+		</div>
+		<div class="order-btn">
+			<div class="btn-save">
+				<span>收藏</span>
+			</div>
+			<div class="btn-now">预约试讲</div>
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="./js/xiangqing.js"></script>
+</body>
+</html>

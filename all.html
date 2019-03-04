@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+	<script src="./js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="searchlist">
+			<span :class="isGrade ? 'selected':'' " @click="clickGrade()" >{{ grade }}<i></i></span>
+			<span :class="isSubject ? 'selected':'' " @click="clickSubject()">{{ subject }}<i></i></span>
+			<span :class="isType ? 'selected':'' " @click="clickType()">{{ teacherType }}<i></i></span>
+		</div>
+		<div v-if="condition" class="content-box" :class="isAll ? 'show':'hide'">
+		    <ul class="content clearfix" :class="isSubject? 'show':'hide'"><li v-for="item in condition.subject" :class="item.isSelected ? 'selected': ' ' " @click="clickItem(item)"> {{ item.label }}</li></ul>
+		    <ul class="content clearfix" :class="isGrade? 'show':'hide'"><li v-for="item in condition.grade" :class="item.isSelected ? 'selected': ' ' " @click="clickItem(item)"> {{ item.label }}</li></ul>
+		    <ul class="content clearfix"  :class="isType? 'show':'hide'"><li v-for="item in condition.type" :class="item.isSelected ? 'selected': ' ' " @click="clickItem(item)"> {{ item.label }}</li></ul>		    
+		</div>
+		<div class="teacher-list">
+			<div class="teacher-item" v-for="item in list">
+			    <a :href="'xiangqing.html?id='+item.id+''">
+					<div class="teacher-img">
+						<img :src="item.image">
+					</div>
+					<div class="teacher-info">
+						<p class="info"><span class="name">{{ item.realname }}</span> <span class="sub" v-for="it in item.subject">{{ it.label }}</span><span class="label" v-for="it in item.grade">{{ it.label }}</span><i class="time">授课{{ item.teach_time }}小时</i></p>
+						<p class="teach-year">
+							<span class="teach">{{ item.teach_year }}年教龄</span>
+						</p>
+						<p class="accept">
+							<span class="dui" >数学</span>
+						</p>
+					</div>
+			    </a>
+			</div>
+	    </div>
+	</div>
+	<script src="./js/all.js"></script>
+</body>
+</html>
